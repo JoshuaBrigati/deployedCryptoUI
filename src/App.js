@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import HeroUnit from './Components/HeroUnit';
-import Backend from './utils/Backend';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -10,8 +10,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Backend.get('/')
+    axios
+      .post('/')
       .then(response => {
+        console.log(response.data);
         this.setState(response.data);
       })
       .catch(response => {
