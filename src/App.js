@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import HeroUnit from './Components/HeroUnit';
+import Backend from './utils/Backend';
 
 class App extends Component {
   constructor() {
@@ -9,7 +10,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(process.env.NODE_ENV);
+    Backend.get('/')
+      .then(response => {
+        this.setState(response.data);
+      })
+      .catch(response => {
+        this.setState({});
+      });
   }
 
   render() {
