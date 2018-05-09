@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import './App.css';
 import HeroUnit from './Components/HeroUnit';
-import axios from 'axios';
+import SignUp from './Components/SignUp';
 
 class App extends Component {
   constructor() {
@@ -27,6 +29,9 @@ class App extends Component {
         <header className="App-header">
           <HeroUnit />
         </header>
+        <div>
+          <SignUp />
+        </div>
       </div>
     );
   }
