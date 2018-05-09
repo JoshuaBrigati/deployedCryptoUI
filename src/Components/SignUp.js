@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SignUp extends Component {
   constructor(props) {
@@ -15,8 +16,19 @@ class SignUp extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
-    console.log(this.state);
     event.preventDefault();
+    axios
+      .post('/user/signup', {
+        email: this.state.email,
+        phone: this.state.phone,
+        password: this.state.password
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
   render() {
     return (
