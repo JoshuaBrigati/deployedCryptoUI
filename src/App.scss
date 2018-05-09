@@ -8,43 +8,60 @@ body,
   font-family: "Lato", sans-serif;
   background: #c2eaba;
   color: aliceblue;
-  text-shadow: 0 0 20px #179dfc; }
+  text-shadow: 0 0 20px rgba(23, 157, 252, 100);
+}
 
 body {
-  background: linear-gradient(0deg, #0000c8, rgba(0, 0, 200, 0)); }
+  background: linear-gradient(0deg, rgb(0, 0, 200), rgba(0, 0, 200, 0));
+}
 
 .background {
-  background: linear-gradient(120deg, rgba(178, 75, 219, 0.767), rgba(0, 0, 100, 0)); }
-
+  background: linear-gradient(
+    120deg,
+    rgba(178, 75, 219, 0.767),
+    rgba(0, 0, 100, 0)
+  );
+}
 .container {
-  background: linear-gradient(240deg, rgba(119, 243, 189, 0.549), rgba(238, 139, 167, 0.451));
+  background: linear-gradient(
+    240deg,
+    rgba(119, 243, 189, 0.549),
+    rgba(238, 139, 167, 0.451)
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
   padding: 0;
-  height: 100vh; }
+  height: 100vh;
+}
 
 .coin {
   text-align: center;
   padding-top: 5px;
   color: aliceblue;
   height: fit-content;
-  text-shadow: 0 0 20px #179dfc; }
+  text-shadow: 0 0 20px rgba(23, 157, 252, 100);
+}
 
 @keyframes spinningH {
   from {
-    transform: rotateX(0deg); }
+    transform: rotateX(0deg);
+  }
   to {
-    transform: rotateX(360deg); } }
+    transform: rotateX(360deg);
+  }
+}
 
 #text-container {
   height: 50px;
-  width: 450px; }
+  width: 450px;
+}
 
 .animate {
-  -webkit-animation: spinningH 5s infinite linear; }
+  -webkit-animation: spinningH 5s infinite linear;
+}
 
 #cube {
   position: absolute;
@@ -53,8 +70,8 @@ body {
   height: 30px;
   width: 60px;
   -webkit-transition: -webkit-transform 2s linear;
-  -webkit-transform-style: preserve-3d; }
-
+  -webkit-transform-style: preserve-3d;
+}
 #cube2 {
   position: absolute;
   padding-left: 350px;
@@ -62,42 +79,49 @@ body {
   height: 30px;
   width: 60px;
   -webkit-transition: -webkit-transform 2s linear;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+}
 
 #cube > div,
 #cube2 > div {
   position: absolute;
   height: 25px;
   width: 60px;
-  background-position: center center; }
+  background-position: center center;
+}
 
 #cube div:nth-child(1),
 #cube2 div:nth-child(1) {
   -webkit-transform: translateZ(15px);
   background-color: #454b51;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+}
 
 #cube div:nth-child(3),
 #cube2 div:nth-child(3) {
   -webkit-transform: rotateX(180deg) translateZ(15px);
   background-color: #454b51;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+}
 
 #cube div:nth-child(5),
 #cube2 div:nth-child(5) {
   -webkit-transform: rotateX(-90deg) translateZ(15px);
   background-color: #3a3f44;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+}
 
 #cube div:nth-child(6),
 #cube2 div:nth-child(6) {
   -webkit-transform: rotateX(90deg) translateZ(15px);
   background-color: #3a3f44;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+}
 
 .buy-or-sell {
-  position: absolute; }
-
+  position: absolute;
+}
 .from-text {
   position: absolute;
-  padding-left: 250px; }
+  padding-left: 250px;
+}
