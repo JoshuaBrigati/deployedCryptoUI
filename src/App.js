@@ -23,31 +23,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="background">
-        <div className="container">
-          {/* <header className="App-header">
-            <HeroUnit />
-          </header> */}
-          <section id="text-container">
-            <h1 className="buy-or-sell">Buy or Sell</h1>
-            <div id="cube" className="animate">
-              <div className="coin">BTC</div>
+      <div class="background">
+        <div class="background-container">
+          <div class="shitty-container">
+            <h1 class="buy-or-sell">Buy or Sell</h1>
+            <h1 class="from-text">From</h1>
+          </div>
+          <div class="text-container">
+            <div id="cube" class="animate">
+              <div class="coin">BTC</div>
               <div />
-              <div className="coin">XRP</div>
+              <div class="coin">XRP</div>
               <div />
-              <div className="coin">ADA</div>
-              <div className="coin">BCH</div>
+              <div class="coin">ADA</div>
+              <div class="coin">BCH</div>
             </div>
-            <h1 className="from-text">From</h1>
-            <div id="cube2" className="animate">
-              <div className="coin">BTC</div>
+
+            <div id="cube2" class="animate">
+              <div class="coin">ETH</div>
               <div />
-              <div className="coin">XRP</div>
+              <div class="coin">BTC</div>
               <div />
-              <div className="coin">ADA</div>
-              <div className="coin">BCH</div>
+              <div class="coin">XRP</div>
+              <div class="coin">ENG</div>
             </div>
-          </section>
+          </div>
         </div>
       </div>
     );

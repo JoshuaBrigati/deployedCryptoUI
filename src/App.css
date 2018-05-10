@@ -6,18 +6,15 @@ body,
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
-  background: #c2eaba;
   color: aliceblue;
-  text-shadow: 0 0 20px #179dfc; }
-
-body {
-  background: linear-gradient(0deg, #0000c8, rgba(0, 0, 200, 0)); }
+  text-shadow: 0 0 20px #179dfc;
+  background: linear-gradient(0deg, rgba(0, 0, 200, 0.6), rgba(0, 0, 200, 0)); }
 
 .background {
-  background: linear-gradient(120deg, rgba(178, 75, 219, 0.767), rgba(0, 0, 100, 0)); }
+  background: linear-gradient(120deg, rgba(50, 150, 100, 0.6), rgba(0, 0, 100, 0)); }
 
-.container {
-  background: linear-gradient(240deg, rgba(119, 243, 189, 0.549), rgba(238, 139, 167, 0.451));
+.background-container {
+  background: linear-gradient(240deg, rgba(150, 50, 50, 0.6), rgba(0, 0, 200, 0));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,78 +23,92 @@ body {
   padding: 0;
   height: 100vh; }
 
+.shitty-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: -135px; }
+  .shitty-container .buy-or-sell {
+    display: inline-block;
+    padding-right: 40px; }
+  .shitty-container .from-text {
+    display: inline-block;
+    margin-left: 120px; }
+
+.text-container {
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: -75px;
+  margin-top: -23px; }
+
 .coin {
   text-align: center;
-  padding-top: 5px;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 26px;
   color: aliceblue;
   height: fit-content;
   text-shadow: 0 0 20px #179dfc; }
 
 @keyframes spinningH {
-  from {
-    transform: rotateX(0deg); }
-  to {
-    transform: rotateX(360deg); } }
-
-#text-container {
-  height: 50px;
-  width: 450px; }
+  25% {
+    -webkit-transform: rotateX(0deg); }
+  25% {
+    -webkit-transform: rotateX(-90deg); }
+  50% {
+    -webkit-transform: rotateX(-180deg); }
+  75% {
+    -webkit-transform: rotateX(-270deg); }
+  100% {
+    -webkit-transform: rotateX(-360deg); } }
 
 .animate {
-  -webkit-animation: spinningH 5s infinite linear; }
+  -webkit-animation: spinningH 10s cubic-bezier(0, 0, 0.2, 1) infinite; }
 
 #cube {
+  display: inline-block;
   position: absolute;
-  padding-left: 150px;
-  /* margin: 0 auto; */
-  height: 30px;
-  width: 60px;
-  -webkit-transition: -webkit-transform 2s linear;
+  height: 50px;
+  width: 100px;
   -webkit-transform-style: preserve-3d; }
 
 #cube2 {
+  display: inline-block;
   position: absolute;
-  padding-left: 350px;
-  /* margin-left: 150px; */
-  height: 30px;
-  width: 60px;
-  -webkit-transition: -webkit-transform 2s linear;
+  padding-left: 230px;
+  height: 50px;
+  width: 120px;
   -webkit-transform-style: preserve-3d; }
 
 #cube > div,
 #cube2 > div {
   position: absolute;
-  height: 25px;
-  width: 60px;
+  height: 55px;
+  width: 100px;
   background-position: center center; }
 
 #cube div:nth-child(1),
 #cube2 div:nth-child(1) {
-  -webkit-transform: translateZ(15px);
+  -webkit-transform: translateZ(26.5px);
   background-color: #454b51;
   background-repeat: no-repeat; }
 
 #cube div:nth-child(3),
 #cube2 div:nth-child(3) {
-  -webkit-transform: rotateX(180deg) translateZ(15px);
+  -webkit-transform: rotateX(180deg) translateZ(26.5px);
   background-color: #454b51;
   background-repeat: no-repeat; }
 
 #cube div:nth-child(5),
 #cube2 div:nth-child(5) {
-  -webkit-transform: rotateX(-90deg) translateZ(15px);
+  -webkit-transform: rotateX(-90deg) translateZ(26.5px);
   background-color: #3a3f44;
   background-repeat: no-repeat; }
 
 #cube div:nth-child(6),
 #cube2 div:nth-child(6) {
-  -webkit-transform: rotateX(90deg) translateZ(15px);
+  -webkit-transform: rotateX(90deg) translateZ(26.5px);
   background-color: #3a3f44;
   background-repeat: no-repeat; }
-
-.buy-or-sell {
-  position: absolute; }
-
-.from-text {
-  position: absolute;
-  padding-left: 250px; }
