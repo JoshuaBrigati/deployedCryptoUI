@@ -7,6 +7,7 @@ body,
   padding: 0;
   font-family: "Lato", sans-serif;
   color: aliceblue;
+  letter-spacing: 0.1em;
   text-shadow: 0 0 20px #179dfc;
   background: linear-gradient(0deg, rgba(0, 0, 200, 0.6), rgba(0, 0, 200, 0)); }
 
@@ -27,7 +28,8 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: -135px; }
+  position: absolute;
+  margin-left: -65px; }
   .shitty-container .buy-or-sell {
     display: inline-block;
     padding-right: 40px; }
@@ -112,3 +114,46 @@ body,
   -webkit-transform: rotateX(90deg) translateZ(26.5px);
   background-color: #3a3f44;
   background-repeat: no-repeat; }
+
+.login-button {
+  position: relative;
+  margin-top: 220px;
+  padding: 1em 2em;
+  background: none;
+  border-style: solid;
+  border: 3px solid;
+  border-color: aliceblue;
+  border-radius: 20px;
+  line-height: 1;
+  font: inherit;
+  letter-spacing: 0.1em;
+  color: aliceblue;
+  text-shadow: 0 0 20px #179dfc;
+  box-shadow: 0 0 10px #179dfc;
+  transition: all 1s ease; }
+
+.login-button:hover,
+.login-button:focus {
+  background: #b4dffe44;
+  color: white;
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0); }
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #9bd4fd; } }
+
+.create-account {
+  font-size: 15px;
+  text-decoration: none;
+  padding-top: 10px; }
+  .create-account:after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0; }
+  .create-account:hover:after {
+    width: 100%;
+    left: 0; }

@@ -11,7 +11,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .post('/user/1')
+      .post("/user/1")
       .then(response => {
         console.log(response.data);
         this.setState(response.data);
@@ -23,31 +23,33 @@ class App extends Component {
 
   render() {
     return (
-      <div class="background">
-        <div class="background-container">
-          <div class="shitty-container">
-            <h1 class="buy-or-sell">Buy or Sell</h1>
-            <h1 class="from-text">From</h1>
+      <div className="background">
+        <div className="background-container">
+          <div className="shitty-container">
+            <h1 className="buy-or-sell">Buy or Sell</h1>
+            <h1 className="from-text">From</h1>
           </div>
-          <div class="text-container">
-            <div id="cube" class="animate">
-              <div class="coin">BTC</div>
+          <div className="text-container">
+            <div id="cube" className="animate">
+              <div className="coin">BTC</div>
               <div />
-              <div class="coin">XRP</div>
+              <div className="coin">XRP</div>
               <div />
-              <div class="coin">ADA</div>
-              <div class="coin">BCH</div>
+              <div className="coin">ADA</div>
+              <div className="coin">BCH</div>
             </div>
 
-            <div id="cube2" class="animate">
-              <div class="coin">ETH</div>
+            <div id="cube2" className="animate">
+              <div className="coin">ETH</div>
               <div />
-              <div class="coin">BTC</div>
+              <div className="coin">BTC</div>
               <div />
-              <div class="coin">XRP</div>
-              <div class="coin">ENG</div>
+              <div className="coin">XRP</div>
+              <div className="coin">ENG</div>
             </div>
           </div>
+          <button className="login-button">Login</button>
+          <a className="create-account">Create Account</a>
         </div>
       </div>
     );
