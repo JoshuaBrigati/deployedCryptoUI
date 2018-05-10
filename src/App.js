@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .post('/')
+      .post('/user/1')
       .then(response => {
         console.log(response.data);
         this.setState(response.data);
