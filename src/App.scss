@@ -6,10 +6,10 @@ body,
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
-  color: aliceblue;
+  color: #f0f8ff;
   letter-spacing: 0.1em;
   text-shadow: 0 0 20px rgba(23, 157, 252, 100);
-  background: linear-gradient(0deg, rgba(0, 0, 200, 0.6), rgba(0, 0, 200, 0));
+  //background: linear-gradient(0deg, rgba(0, 0, 200, 0.6), rgba(0, 0, 200, 0));
 }
 
 .background {
@@ -21,11 +21,6 @@ body,
 }
 
 .background-container {
-  background: linear-gradient(
-    240deg,
-    rgba(150, 50, 50, 0.6),
-    rgba(0, 0, 200, 0)
-  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,22 +28,27 @@ body,
   margin: 0;
   padding: 0;
   height: 100vh;
-}
-
-.shitty-container {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   position: absolute;
-  margin-left: -65px;
+  z-index: 10;
+  overflow: hidden;
+}
+@media (min-width: 600px) {
+  .shitty-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: -65px;
 
-  .buy-or-sell {
-    display: inline-block;
-    padding-right: 40px;
-  }
-  .from-text {
-    display: inline-block;
-    margin-left: 120px;
+    .buy-or-sell {
+      display: inline-block;
+      padding-right: 40px;
+    }
+    .from-text {
+      display: inline-block;
+      margin-left: 120px;
+    }
   }
 }
 
@@ -160,14 +160,14 @@ $height: 55;
   text-shadow: 0 0 20px #179dfc;
   box-shadow: 0 0 10px rgba(23, 157, 252, 100);
   transition: all 1s ease;
-}
-
-.login-button:hover,
-.login-button:focus {
-  background: #b4dffe44;
-  color: white;
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(#fff, 0);
+  &:hover,
+  &:focus {
+    outline: none;
+    background: #b4dffe44;
+    color: white;
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgba(#fff, 0);
+  }
 }
 
 @keyframes pulse {
@@ -180,6 +180,7 @@ $height: 55;
   font-size: 15px;
   text-decoration: none;
   padding-top: 10px;
+  color: aliceblue;
   &:after {
     content: "";
     display: block;
@@ -192,4 +193,221 @@ $height: 55;
     width: 100%;
     left: 0;
   }
+}
+
+$prism-height: 450px;
+$prism-length: 350px;
+$prism-depth: $prism-length;
+$spacing: 30px;
+$br: 3px;
+$text-light: aliceblue;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  text-align: center;
+  -webkit-font-smoothing: always;
+}
+.wrapper {
+  width: $prism-length;
+  height: $prism-height;
+  margin: 150px auto;
+  perspective: 600px;
+  text-align: left;
+}
+
+.rec-prism {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in;
+}
+
+.face {
+  position: absolute;
+  width: $prism-length;
+  height: $prism-height;
+  padding: $spacing;
+  background: rgba(140, 180, 220, 0.94);
+  border: 3px solid $text-light;
+  border-radius: 3px;
+  text-shadow: 0 0 20px #179dfc;
+
+  .content {
+    color: $text-light;
+    margin-top: 5px;
+    h2 {
+      font-size: 2em;
+      color: $text-light;
+      margin: 0;
+    }
+    .donate-coin {
+      margin: 5px 0;
+    }
+    .field-wrapper {
+      margin-top: $spacing * 1.5;
+      position: relative;
+
+      label {
+        position: absolute;
+        pointer-events: none;
+        font-size: 0.85em;
+        top: 40%;
+        left: 0;
+        transform: translateY(-50%);
+        transition: all ease-in 0.25s;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      textarea {
+        width: 100%;
+        border: none;
+        background: transparent;
+        line-height: 2em;
+        border-bottom: 1px solid $text-light;
+        color: $text-light;
+        -webkit-appearance: none;
+        outline: none;
+        &::-webkit-input-placeholder {
+          opacity: 0;
+        }
+        &:focus,
+        &:not(:placeholder-shown) {
+          + label {
+            top: -35%;
+            color: $text-light;
+          }
+        }
+      }
+      input[type="submit"] {
+        cursor: pointer;
+        width: 100%;
+        background: transparent;
+        line-height: 2em;
+        color: $text-light;
+        border: 1px solid $text-light;
+        border-radius: $br;
+        padding: $spacing/4;
+
+        &:hover {
+          opacity: 0.9;
+          background: $text-light;
+          color: rgba(140, 180, 220, 0.94);
+          border: 1px solid rgba(140, 180, 220, 0.94);
+        }
+        &:active {
+          transform: scale(0.96);
+        }
+      }
+      textarea {
+        resize: none;
+        line-height: 1em;
+        &:focus,
+        &:not(:placeholder-shown) {
+          + label {
+            top: -25%;
+          }
+        }
+      }
+    }
+  }
+
+  .thank-you-msg {
+    position: absolute;
+    width: 200px;
+    height: 130px;
+    text-align: center;
+    font-size: 2em;
+    color: $text-light;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+
+    &:after {
+      position: absolute;
+      content: "";
+      width: 50px;
+      height: 25px;
+      border: 10px solid $text-light;
+      border-right: 0;
+      border-top: 0;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%) rotate(0deg) scale(0);
+      -webkit-animation: success ease-in 0.15s forwards;
+      animation-delay: 2s;
+    }
+  }
+  &-front {
+    transform: rotateY(0deg) translateZ($prism-length/2);
+  }
+  &-top {
+    height: $prism-depth;
+    transform: rotateX(90deg) translateZ($prism-depth/2);
+  }
+  &-right {
+    transform: rotateY(90deg) translateZ($prism-length/2);
+  }
+  &-left {
+    transform: rotateY(-90deg) translateZ($prism-length/2);
+  }
+  &-bottom {
+    height: $prism-depth;
+    transform: rotateX(-90deg) translateZ($prism-height - ($prism-depth/2));
+  }
+}
+
+.nav {
+  margin: $spacing 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    font-size: 1.4em;
+    margin: 0 $spacing/2;
+    position: relative;
+    cursor: pointer;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      border-top: 2px solid $text-light;
+      border-bottom: 2px solid $text-light;
+      transition: width 0.3s ease 0s, left 3s ease 0s;
+      width: 0px;
+    }
+    &:hover:after {
+      width: 100%;
+    }
+  }
+}
+
+.signup,
+.singin {
+  display: block;
+  margin: $spacing 0;
+  font-size: 0.75em;
+  text-align: center;
+  color: $text-light;
+  cursor: pointer;
+}
+
+@keyframes success {
+  from {
+    transform: translate(-50%, -50%) rotate(0) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  }
+}
+
+canvas {
+  width: inherit !important;
+  z-index: 1 !important;
 }
