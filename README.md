@@ -1,1 +1,1 @@
-<img src="./CryptoAppUIGIF.gif" width="40" height="40" />
+<img src="./CryptoAppUIGIF.gif" width="200" height="200" />
