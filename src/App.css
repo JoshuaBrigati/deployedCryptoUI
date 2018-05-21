@@ -10,9 +10,6 @@ body,
   letter-spacing: 0.1em;
   text-shadow: 0 0 20px #179dfc; }
 
-.background {
-  background: linear-gradient(120deg, rgba(50, 150, 100, 0.6), rgba(0, 0, 100, 0)); }
-
 .background-container {
   display: flex;
   flex-direction: column;
@@ -38,15 +35,14 @@ body,
       padding-right: 40px; }
     .shitty-container .from-text {
       display: inline-block;
-      margin-left: 120px; } }
-
-.text-container {
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-left: -75px;
-  margin-top: -23px; }
+      margin-left: 120px; }
+  .text-container {
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: -75px;
+    margin-top: -23px; } }
 
 .coin {
   text-align: center;
@@ -120,6 +116,7 @@ body,
 
 .login-button {
   position: relative;
+  cursor: pointer;
   margin-top: 220px;
   padding: 1em 2em;
   background: none;
@@ -137,9 +134,9 @@ body,
   .login-button:hover, .login-button:focus {
     outline: none;
     background: #b4dffe44;
-    color: white;
+    color: aliceblue;
     animation: pulse 1s;
-    box-shadow: 0 0 0 2em rgba(255, 255, 255, 0); }
+    box-shadow: 0 0 0 2em rgba(240, 248, 255, 0); }
 
 @keyframes pulse {
   0% {
@@ -154,7 +151,7 @@ body,
     content: "";
     display: block;
     height: 2px;
-    background: #fff;
+    background: aliceblue;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0; }
   .create-account:hover:after {
@@ -170,13 +167,16 @@ body {
   -webkit-font-smoothing: always; }
 
 .wrapper {
-  width: 350px;
-  height: 450px;
-  margin: 150px auto;
+  width: 500px;
+  height: 400px;
   perspective: 600px;
-  text-align: left; }
+  text-align: left;
+  position: relative; }
+  @media screen and (max-height: 770px) {
+    .wrapper {
+      height: 200px; } }
 
-.rec-prism {
+.cube-thingy {
   width: 100%;
   height: 100%;
   position: relative;
@@ -185,13 +185,21 @@ body {
 
 .face {
   position: absolute;
-  width: 350px;
-  height: 450px;
-  padding: 30px;
+  width: 500px;
+  height: 400px;
+  padding: 25px;
   background: rgba(140, 180, 220, 0.94);
   border: 3px solid aliceblue;
   border-radius: 3px;
   text-shadow: 0 0 20px #179dfc; }
+  @media only screen and (max-height: 950px) {
+    .face {
+      height: 300px;
+      padding: 10px; } }
+  @media only screen and (max-height: 770px) {
+    .face {
+      height: 220px;
+      padding: 10px; } }
   .face .content {
     color: aliceblue;
     margin-top: 5px; }
@@ -199,11 +207,23 @@ body {
       font-size: 2em;
       color: aliceblue;
       margin: 0; }
+      @media only screen and (max-height: 770px) {
+        .face .content h2 {
+          font-size: 1em; } }
+    .face .content .donate {
+      font-size: 4em;
+      margin-bottom: 0.5em; }
     .face .content .donate-coin {
-      margin: 5px 0; }
+      font-size: 1.5em; }
     .face .content .field-wrapper {
-      margin-top: 45px;
+      margin-top: 37.5px;
       position: relative; }
+      @media only screen and (max-height: 950px) {
+        .face .content .field-wrapper {
+          margin-top: 25.5px; } }
+      @media only screen and (max-height: 770px) {
+        .face .content .field-wrapper {
+          margin-top: 15px; } }
       .face .content .field-wrapper label {
         position: absolute;
         pointer-events: none;
@@ -219,10 +239,23 @@ body {
         border: none;
         background: transparent;
         line-height: 2em;
+        font-size: 2em;
         border-bottom: 1px solid aliceblue;
         color: aliceblue;
         -webkit-appearance: none;
         outline: none; }
+        @media screen and (max-height: 950px) {
+          .face .content .field-wrapper input[type="text"],
+          .face .content .field-wrapper input[type="password"],
+          .face .content .field-wrapper textarea {
+            line-height: 1em;
+            font-size: 1em; } }
+        @media screen and (max-height: 770px) {
+          .face .content .field-wrapper input[type="text"],
+          .face .content .field-wrapper input[type="password"],
+          .face .content .field-wrapper textarea {
+            line-height: 1em;
+            font-size: 1em; } }
         .face .content .field-wrapper input[type="text"]::-webkit-input-placeholder,
         .face .content .field-wrapper input[type="password"]::-webkit-input-placeholder,
         .face .content .field-wrapper textarea::-webkit-input-placeholder {
@@ -238,11 +271,14 @@ body {
         cursor: pointer;
         width: 100%;
         background: transparent;
-        line-height: 2em;
+        line-height: 1em;
         color: aliceblue;
         border: 1px solid aliceblue;
         border-radius: 3px;
-        padding: 7.5px; }
+        padding: 6.25px; }
+        @media screen and (max-height: 770px) {
+          .face .content .field-wrapper input[type="submit"] {
+            line-height: 1em; } }
         .face .content .field-wrapper input[type="submit"]:hover {
           opacity: 0.9;
           background: aliceblue;
@@ -257,7 +293,7 @@ body {
           top: -25%; }
   .face .thank-you-msg {
     position: absolute;
-    width: 200px;
+    width: 400px;
     height: 130px;
     text-align: center;
     font-size: 2em;
@@ -279,25 +315,35 @@ body {
       -webkit-animation: success ease-in 0.15s forwards;
       animation-delay: 2s; }
   .face-front {
-    transform: rotateY(0deg) translateZ(175px); }
+    transform: rotateY(0deg) translateZ(250px); }
   .face-top {
-    height: 350px;
-    transform: rotateX(90deg) translateZ(175px); }
+    height: 500px;
+    transform: rotateX(90deg) translateZ(250px); }
   .face-right {
-    transform: rotateY(90deg) translateZ(175px); }
+    transform: rotateY(90deg) translateZ(250px); }
   .face-left {
-    transform: rotateY(-90deg) translateZ(175px); }
+    transform: rotateY(-90deg) translateZ(250px); }
   .face-bottom {
-    height: 350px;
-    transform: rotateX(-90deg) translateZ(275px); }
+    height: 500px;
+    transform: rotateX(-90deg) translateZ(150px); }
+    @media only screen and (max-height: 950px) {
+      .face-bottom {
+        transform: rotateX(-90deg) translateZ(50px); } }
+    @media only screen and (max-height: 770px) {
+      .face-bottom {
+        transform: rotateX(-90deg) translateZ(-30px); } }
+  .face-back {
+    transform: rotateY(180deg) translateZ(250px); }
 
 .nav {
-  margin: 30px 0;
-  padding: 0; }
+  margin: 25px 0;
+  padding: 0;
+  position: absolute;
+  top: 0px; }
   .nav li {
     display: inline-block;
     font-size: 1.4em;
-    margin: 0 15px;
+    margin: 0 12.5px;
     position: relative;
     cursor: pointer; }
     .nav li:after {
@@ -316,11 +362,15 @@ body {
 .signup,
 .singin {
   display: block;
-  margin: 30px 0;
+  margin: 20px 0;
   font-size: 0.75em;
   text-align: center;
   color: aliceblue;
   cursor: pointer; }
+  @media screen and (max-height: 770px) {
+    .signup,
+    .singin {
+      margin: 10px 0; } }
 
 @keyframes success {
   from {
@@ -330,4 +380,5 @@ body {
 
 canvas {
   width: inherit !important;
+  height: 100vh;
   z-index: 1 !important; }
