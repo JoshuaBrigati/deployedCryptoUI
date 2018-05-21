@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -12,13 +11,14 @@ class Login extends Component {
       loginface: "",
       signup: "",
       frontName: "",
-      rightName: ""
+      rightName: "",
+      originalHeight: "",
+      originalWidth: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    console.log(this.props.location.state.linkState);
     if (this.props.location.state.linkState === "Login") {
       this.setState({
         loginface: "face-front",
@@ -34,30 +34,51 @@ class Login extends Component {
         rightName: "Login"
       });
     }
+    var element = document.querySelector(".cube-thingy"),
+      style = window.getComputedStyle(element),
+      height = style.getPropertyValue("height");
+    this.setState({
+      originalHeight: height
+    });
+    var element2 = document.querySelector(".cube-thingy"),
+      style2 = window.getComputedStyle(element2),
+      width2 = style2.getPropertyValue("width");
+    this.setState({
+      originalWidth: width2
+    });
   }
 
-  showSignup() {
-    let prism = document.querySelector(".rec-prism");
-    prism.style.transform = "rotateY( -90deg)";
+  SignUp() {
+    let cube = document.querySelector(".cube-thingy");
+    cube.style.transform = "rotateY( -90deg)";
   }
-  showLogin() {
-    let prism = document.querySelector(".rec-prism");
-    prism.style.transform = "none";
-  }
-
-  showDonate() {
-    let prism = document.querySelector(".rec-prism");
-    prism.style.transform = "rotateX( -90deg)";
+  Login() {
+    let cube = document.querySelector(".cube-thingy");
+    cube.style.transform = "none";
   }
 
-  showContactUs() {
-    let prism = document.querySelector(".rec-prism");
-    prism.style.transform = "rotateY( 90deg)";
+  Donate() {
+    let cube = document.querySelector(".cube-thingy");
+    cube.style.transform = "rotateX( -90deg) translateZ(100px)";
+    cube.style.height = "10px";
   }
 
-  showThankYou() {
-    let prism = document.querySelector(".rec-prism");
-    prism.style.transform = "rotateX( 90deg)";
+  ContactUs() {
+    let cube = document.querySelector(".cube-thingy");
+    cube.style.transform = "rotateY( 90deg)";
+  }
+
+  ThankYou() {
+    let cube = document.querySelector(".cube-thingy");
+    cube.style.transform = "rotateX( 90deg) translateZ(-100px)";
+    cube.style.height = this.state.originalHeight;
+    //cube.style.height = "10px";
+  }
+
+  CryptoDisplay() {
+    let cube = document.querySelector(".cube-thingy");
+    cube.style.transform = "rotateX(180deg)";
+    cube.style.height = this.state.originalHeight;
   }
 
   handleChange(event) {
@@ -79,31 +100,49 @@ class Login extends Component {
       });
   }
   render() {
+    const ifLoginFront =
+      this.state.loginface === "face-front" ? (
+        <span className="singin" onClick={this.SignUp.bind(this)}>
+          Not a user? Sign Up
+        </span>
+      ) : (
+        <span className="singin" onClick={this.Login.bind(this)}>
+          Not a user? Sign Up
+        </span>
+      );
+
+    const ifSignUpFront =
+      this.state.signup === "face-front" ? (
+        <span className="singin" onClick={this.SignUp.bind(this)}>
+          Already a user? Login
+        </span>
+      ) : (
+        <span className="singin" onClick={this.Login.bind(this)}>
+          Already a user? Login
+        </span>
+      );
+
     return (
       <div className="background">
         <div className="background-container">
           <ul className="nav">
-            <li onClick={this.showLogin.bind(this)}>{this.state.frontName}</li>
-            <li onClick={this.showSignup.bind(this)}>{this.state.rightName}</li>
-            <li onClick={this.showDonate.bind(this)}>Lambo?</li>
-            <li onClick={this.showContactUs.bind(this)}>
-              Tell us how great we are
-            </li>
+            <li onClick={this.Login.bind(this)}>{this.state.frontName}</li>
+            <li onClick={this.SignUp.bind(this)}>{this.state.rightName}</li>
+            <li onClick={this.Donate.bind(this)}>Lambo?</li>
+            <li onClick={this.ContactUs.bind(this)}>Contact Us</li>
           </ul>
           <div className="wrapper">
-            <div className="rec-prism">
+            <div className="cube-thingy">
               <div className="face face-top">
                 <div className="content">
-                  <h2>Donate</h2>
-                  <small className="donate-coin">
+                  <h2 className="donate">Donate</h2>
+                  <div className="donate-coin">
                     BTC: 1nkja0h3lkna97hnrvb0oi3n789s
-                  </small>
+                  </div>
                   <br />
-                  <small className="donate-coin">ETH: ueqrwiouerwnje</small>
+                  <div className="donate-coin">ETH: ueqrwiouerwnje</div>
                   <br />
-                  <small className="donate-coin">
-                    XRP: reoehrpjoehopjhtjopth
-                  </small>
+                  <div className="donate-coin">XRP: reoehrpjoehopjhtjopth</div>
                 </div>
               </div>
               <div className={`face ${this.state.loginface}`}>
@@ -129,15 +168,10 @@ class Login extends Component {
                     <div className="field-wrapper">
                       <input
                         type="submit"
-                        onClick={this.showThankYou.bind(this)}
+                        onClick={this.CryptoDisplay.bind(this)}
                       />
                     </div>
-                    <span
-                      className="signup"
-                      onClick={this.showSignup.bind(this)}
-                    >
-                      Not a user? {this.state.rightName}
-                    </span>
+                    {ifLoginFront}
                   </form>
                 </div>
               </div>
@@ -178,21 +212,16 @@ class Login extends Component {
                     <div className="field-wrapper">
                       <input
                         type="submit"
-                        onClick={this.showThankYou.bind(this)}
+                        onClick={this.CryptoDisplay.bind(this)}
                       />
                     </div>
-                    <span
-                      className="singin"
-                      onClick={this.showLogin.bind(this)}
-                    >
-                      Already a user? {this.state.frontName}
-                    </span>
+                    {ifSignUpFront}
                   </form>
                 </div>
               </div>
               <div className="face face-left">
                 <div className="content">
-                  <h2>Tell us how great we are</h2>
+                  <h2>Contact Us</h2>
                   <form onSubmit={event => event.preventDefault()}>
                     <div className="field-wrapper">
                       <input type="text" name="name" placeholder="name" />
@@ -207,13 +236,13 @@ class Login extends Component {
                       <label>Your Message</label>
                     </div>
                     <div className="field-wrapper">
-                      <input
-                        type="submit"
-                        onClick={this.showThankYou.bind(this)}
-                      />
+                      <input type="submit" onClick={this.ThankYou.bind(this)} />
                     </div>
                   </form>
                 </div>
+              </div>
+              <div className="face face-back">
+                <div className="content" />
               </div>
               <div className="face face-bottom">
                 <div className="content">
