@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import ParticleNetwork from "canvas-particle-network";
+import { isMobile, isIE } from "react-device-detect";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      page: "Hi"
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -25,6 +23,29 @@ class App extends Component {
   }
 
   render() {
+    if (isMobile) {
+      return (
+        <div className="background-container">
+          <div className="shitty-container">
+            <h1 className="buy-or-sell">
+              This content is unavailable on mobile
+            </h1>
+          </div>
+        </div>
+      );
+    }
+    if (isIE) {
+      return (
+        <div className="background-container">
+          <div className="shitty-container">
+            <h1 className="buy-or-sell">
+              IE is not supported. Download Chrome/Opera/Firefox
+            </h1>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="background-container">
         <div className="shitty-container">
@@ -50,11 +71,11 @@ class App extends Component {
             <div className="coin">ENG</div>
           </div>
         </div>
-        <Link to={{ pathname: "/Login", state: { linkState: "Login" } }}>
+        <Link to={{ pathname: "/login", state: { linkState: "Login" } }}>
           <button className="login-button">Login</button>
         </Link>
         <Link
-          to={{ pathname: "/Login", state: { linkState: "SignUp" } }}
+          to={{ pathname: "/signup", state: { linkState: "SignUp" } }}
           className="create-account"
         >
           Create Account
