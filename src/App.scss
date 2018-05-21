@@ -9,16 +9,8 @@ body,
   color: #f0f8ff;
   letter-spacing: 0.1em;
   text-shadow: 0 0 20px rgba(23, 157, 252, 100);
-  //background: linear-gradient(0deg, rgba(0, 0, 200, 0.6), rgba(0, 0, 200, 0));
 }
-
-.background {
-  background: linear-gradient(
-    120deg,
-    rgba(50, 150, 100, 0.6),
-    rgba(0, 0, 100, 0)
-  );
-}
+$text-light: aliceblue;
 
 .background-container {
   display: flex;
@@ -50,15 +42,15 @@ body,
       margin-left: 120px;
     }
   }
-}
 
-.text-container {
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-left: -75px;
-  margin-top: -23px;
+  .text-container {
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: -75px;
+    margin-top: -23px;
+  }
 }
 
 .coin {
@@ -66,7 +58,7 @@ body,
   vertical-align: middle;
   line-height: 50px;
   font-size: 26px;
-  color: aliceblue;
+  color: $text-light;
   height: fit-content;
   text-shadow: 0 0 20px rgba(23, 157, 252, 100);
 }
@@ -146,17 +138,18 @@ $height: 55;
 
 .login-button {
   position: relative;
+  cursor: pointer;
   margin-top: 220px;
   padding: 1em 2em;
   background: none;
   border-style: solid;
   border: 3px solid;
-  border-color: aliceblue;
+  border-color: $text-light;
   border-radius: 20px;
   line-height: 1;
   font: inherit;
   letter-spacing: 0.1em;
-  color: aliceblue;
+  color: $text-light;
   text-shadow: 0 0 20px #179dfc;
   box-shadow: 0 0 10px rgba(23, 157, 252, 100);
   transition: all 1s ease;
@@ -164,9 +157,9 @@ $height: 55;
   &:focus {
     outline: none;
     background: #b4dffe44;
-    color: white;
+    color: $text-light;
     animation: pulse 1s;
-    box-shadow: 0 0 0 2em rgba(#fff, 0);
+    box-shadow: 0 0 0 2em rgba($text-light, 0);
   }
 }
 
@@ -180,12 +173,12 @@ $height: 55;
   font-size: 15px;
   text-decoration: none;
   padding-top: 10px;
-  color: aliceblue;
+  color: $text-light;
   &:after {
     content: "";
     display: block;
     height: 2px;
-    background: #fff;
+    background: $text-light;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
   }
@@ -195,12 +188,15 @@ $height: 55;
   }
 }
 
-$prism-height: 450px;
-$prism-length: 350px;
+$prism-height: 400px;
+$prism-length: 500px;
+@media only screen and (max-height: 950px) {
+  $prism-height: 300px;
+  $prism-length: 500px;
+}
 $prism-depth: $prism-length;
-$spacing: 30px;
+$spacing: 25px;
 $br: 3px;
-$text-light: aliceblue;
 
 * {
   box-sizing: border-box;
@@ -214,12 +210,15 @@ body {
 .wrapper {
   width: $prism-length;
   height: $prism-height;
-  margin: 150px auto;
+  @media screen and (max-height: 770px) {
+    height: 200px;
+  }
   perspective: 600px;
   text-align: left;
+  position: relative;
 }
 
-.rec-prism {
+.cube-thingy {
   width: 100%;
   height: 100%;
   position: relative;
@@ -232,6 +231,14 @@ body {
   width: $prism-length;
   height: $prism-height;
   padding: $spacing;
+  @media only screen and (max-height: 950px) {
+    height: 300px;
+    padding: 10px;
+  }
+  @media only screen and (max-height: 770px) {
+    height: 220px;
+    padding: 10px;
+  }
   background: rgba(140, 180, 220, 0.94);
   border: 3px solid $text-light;
   border-radius: 3px;
@@ -242,14 +249,27 @@ body {
     margin-top: 5px;
     h2 {
       font-size: 2em;
+      @media only screen and (max-height: 770px) {
+        font-size: 1em;
+      }
       color: $text-light;
       margin: 0;
     }
+    .donate {
+      font-size: 4em;
+      margin-bottom: 0.5em;
+    }
     .donate-coin {
-      margin: 5px 0;
+      font-size: 1.5em;
     }
     .field-wrapper {
       margin-top: $spacing * 1.5;
+      @media only screen and (max-height: 950px) {
+        margin-top: 17px * 1.5;
+      }
+      @media only screen and (max-height: 770px) {
+        margin-top: 10px * 1.5;
+      }
       position: relative;
 
       label {
@@ -269,6 +289,15 @@ body {
         border: none;
         background: transparent;
         line-height: 2em;
+        font-size: 2em;
+        @media screen and (max-height: 950px) {
+          line-height: 1em;
+          font-size: 1em;
+        }
+        @media screen and (max-height: 770px) {
+          line-height: 1em;
+          font-size: 1em;
+        }
         border-bottom: 1px solid $text-light;
         color: $text-light;
         -webkit-appearance: none;
@@ -288,7 +317,10 @@ body {
         cursor: pointer;
         width: 100%;
         background: transparent;
-        line-height: 2em;
+        line-height: 1em;
+        @media screen and (max-height: 770px) {
+          line-height: 1em;
+        }
         color: $text-light;
         border: 1px solid $text-light;
         border-radius: $br;
@@ -319,7 +351,7 @@ body {
 
   .thank-you-msg {
     position: absolute;
-    width: 200px;
+    width: 400px;
     height: 130px;
     text-align: center;
     font-size: 2em;
@@ -358,13 +390,24 @@ body {
   }
   &-bottom {
     height: $prism-depth;
+    @media only screen and (max-height: 950px) {
+      transform: rotateX(-90deg) translateZ(300px - (500px/2));
+    }
+    @media only screen and (max-height: 770px) {
+      transform: rotateX(-90deg) translateZ(220px - (500px/2));
+    }
     transform: rotateX(-90deg) translateZ($prism-height - ($prism-depth/2));
+  }
+  &-back {
+    transform: rotateY(180deg) translateZ($prism-length/2);
   }
 }
 
 .nav {
   margin: $spacing 0;
   padding: 0;
+  position: absolute;
+  top: 0px;
   li {
     display: inline-block;
     font-size: 1.4em;
@@ -391,7 +434,10 @@ body {
 .signup,
 .singin {
   display: block;
-  margin: $spacing 0;
+  margin: 20px 0;
+  @media screen and (max-height: 770px) {
+    margin: 10px 0;
+  }
   font-size: 0.75em;
   text-align: center;
   color: $text-light;
@@ -409,5 +455,6 @@ body {
 
 canvas {
   width: inherit !important;
+  height: 100vh;
   z-index: 1 !important;
 }
